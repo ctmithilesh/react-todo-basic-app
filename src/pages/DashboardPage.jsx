@@ -7,16 +7,7 @@ import Cookies from "universal-cookie"
 
 const DashboardPage = () => {
 
-    const cookies = new Cookies()
-    const accessToken = cookies.get('accessToken')
-
-    console.log(accessToken)
-    useEffect(() => {
-        toast('Login Successful', {
-            autoClose: 5000,
-            hideProgressBar: true
-        })
-    })
+    
     return (
         <>
             <ToastContainer />

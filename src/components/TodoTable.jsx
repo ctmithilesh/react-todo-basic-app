@@ -2,6 +2,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Loading from './Loading'
+import { Link } from 'react-router-dom'
 const API = 'https://stingray-app-2uvnh.ondigitalocean.app/api/todo/find/user'
 const TodoTable = () => {
 
@@ -45,11 +46,15 @@ const TodoTable = () => {
                         <tr key={index}>
                             <th>{item.todo_title}</th>
                             <td>{item.todo_description}</td>
-                            <td>Edit </td>
+                            <td>
+                                <Link to={`/delete-todo/${item.id}`}>
+                                    Delete
+                                </Link>
+                            </td>
                         </tr>
 
-                    )): <Loading /> }
-                    
+                    )) : <Loading />}
+
                     {/* row 2 */}
 
                 </tbody>
