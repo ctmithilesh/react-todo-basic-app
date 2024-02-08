@@ -12,12 +12,7 @@ const NewForm = () => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
 
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm()
+    
 
     const handleInputChange = (e) => {
         const target = e.target

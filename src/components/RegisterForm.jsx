@@ -1,12 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
-import FormComponent from "./FormComponent";
-import NewForm from "./NewForm";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import FormLabel from "./FormLabel";
 import axios from "axios";
-import ErrorMessage from "./ErrorMessage";
 import { ToastContainer, toast } from "react-toastify";
 const API = 'https://stingray-app-2uvnh.ondigitalocean.app/api/auth/signup'
 
@@ -44,14 +41,14 @@ const RegisterForm = () => {
             await axios
                 .post(`${API}`, { username, email, password })
                 .then((res) => {
-                    console.log(res);
-
-
-
+                    console.log(res)
 
                 })
                 .catch((err) => {
                     console.log(err);
+                    toast('Something went Wrong', {
+                        type:'error'
+                    })
                 });
         } catch (e) {
             console.log(e);
@@ -59,7 +56,10 @@ const RegisterForm = () => {
         setTimeout(() => {
             navigate('/login')
         }, 1000)
-        toast('User Registered Successfully!')
+        toast('User Registered Successfully!', {
+            autoClose: 2000,
+            hideProgressBar: true 
+        })
     };
     return (
         <div className="hero min-h-screen bg-base-200">
