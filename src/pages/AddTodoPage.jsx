@@ -5,7 +5,7 @@ const AddTodoPage = () => {
   return (
       <>
             <Navigation />
-          <AddTodoForm />
+            <AddTodoForm />
     </>
       
 

@@ -2,8 +2,8 @@
 
 const ErrorMessage = ({ error }) => {
     return (
-        <small className="text-red-400">
-            {error}
+        <small className="text-red-400"> 
+            {error} is required
         </small>
     )
 }

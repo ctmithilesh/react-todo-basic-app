@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Cookies from "universal-cookie";
+import ErrorMessage from "./ErrorMessage";
 const API = 'https://stingray-app-2uvnh.ondigitalocean.app/api/todo/add'
 
 const AddTodoForm = () => {
@@ -17,7 +18,7 @@ const AddTodoForm = () => {
     const user_id = cookies.get("user_id");
     const [todo, setData] = useState({});
 
-    const navigate = useNavigate()  
+    const navigate = useNavigate()
 
     const handleInputChange = (e) => {
         const target = e.target;
@@ -68,7 +69,10 @@ const AddTodoForm = () => {
                             className="input input-bordered w-full max-w-xs"
                             {...register('todo_title', { required: true })}
                         />
-                        {errors.todo_title && <small>Todo Title is required </small>}
+                        <div>
+                            {errors.todo_title && <ErrorMessage error="Todo Title" />}
+                        </div>
+
                     </div>
                     <div>
                         <input
@@ -77,7 +81,9 @@ const AddTodoForm = () => {
                             className="input input-bordered w-full max-w-xs"
                             {...register('todo_description', { required: true })}
                         />
-                        {errors.todo_description && <small>Todo Description is required </small>}
+                        <div>
+                            {errors.todo_description && <ErrorMessage title="Todo Description" />}
+                        </div>
                     </div>
                     <div>
                         <input

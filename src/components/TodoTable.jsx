@@ -3,15 +3,23 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Loading from './Loading'
 import { Link } from 'react-router-dom'
+import Cookies from 'universal-cookie'
 const API = 'https://stingray-app-2uvnh.ondigitalocean.app/api/todo/find/user'
 const TodoTable = () => {
 
-    const user_id = '64f9afc544604a35a7585aff'
+    const cookies = new Cookies()
+    const user_id = cookies.get('user_id')
+    
     const [data, setData] = useState(null)
     const dataNotFound = data != null
+
+    // Lifecycle Method - acts like componentDidMount and componentDidUpdate
+    // First method to get triggered
     useEffect(() => {
         fetchTodos()
     }, [dataNotFound])
+
+
     const fetchTodos = async () => {
         try {
             await axios.post(`${API}`, { user_id })

@@ -27,6 +27,7 @@ function App() {
         <Route exact path='/add-todo' element={<AddTodoPage />} />
       </Route>
 
+      
       <Route exact path='/delete-todo/:id' element={<DeletePage />} />
 
       <Route exact path='/logout' element={<LogoutPage />} />
